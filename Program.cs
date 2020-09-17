@@ -14,7 +14,6 @@ namespace HSPA_Web_Api
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            //ss
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
