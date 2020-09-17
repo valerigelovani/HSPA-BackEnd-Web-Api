@@ -14,7 +14,7 @@ namespace HSPA_Web_Api.Controllers
     {
         [HttpGet]
         public IEnumerable<string> Get() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
-            return new string[] { "Atlanta", "New York" };
+            return new string[] { "Atlanta", "New York", "chicago" };
         }
 
         [HttpGet("{id}")]
