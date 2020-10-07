@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Goga\\Desktop\\HSPA.Back-End\\HSPA-Web-Api\\HSPA-Web-Api.csproj": {}
+    "C:\\Users\\Goga\\Desktop\\HSPA-BackEnd-Web-Api\\HSPA-Web-Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Goga\\Desktop\\HSPA.Back-End\\HSPA-Web-Api\\HSPA-Web-Api.csproj": {
+    "C:\\Users\\Goga\\Desktop\\HSPA-BackEnd-Web-Api\\HSPA-Web-Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\HSPA.Back-End\\HSPA-Web-Api\\HSPA-Web-Api.csproj",
+        "projectUniqueName": "C:\\Users\\Goga\\Desktop\\HSPA-BackEnd-Web-Api\\HSPA-Web-Api.csproj",
         "projectName": "HSPA-Web-Api",
-        "projectPath": "C:\\Users\\Goga\\Desktop\\HSPA.Back-End\\HSPA-Web-Api\\HSPA-Web-Api.csproj",
+        "projectPath": "C:\\Users\\Goga\\Desktop\\HSPA-BackEnd-Web-Api\\HSPA-Web-Api.csproj",
         "packagesPath": "C:\\Users\\Goga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Goga\\Desktop\\HSPA.Back-End\\HSPA-Web-Api\\obj\\",
+        "outputPath": "C:\\Users\\Goga\\Desktop\\HSPA-BackEnd-Web-Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -42,6 +42,22 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

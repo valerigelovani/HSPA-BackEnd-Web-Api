@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HSPA_Web_Api.Data;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,15 +13,17 @@ namespace HSPA_Web_Api.Controllers
     [ApiController]
     public class CityController : ControllerBase
     {
+        private readonly DataContext dc;
+
+        public CityController(DataContext dc)
+        {
+            this.dc = dc;
+        }
         [HttpGet]
-        public IEnumerable<string> Get() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
-            return new string[] { "Atlanta", "New York", "chicago" };
+        public IActionResult GetCities() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
+            var cities = dc.Cities.ToList();
+            return Ok(cities);
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
-        { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
-            return "Atlanta"; // axla rac ar unda cifri chavwerotot /api/city/ aq 1 2 an rac gvinda amoagdebs atlantas
-        }
     }
 }
