@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HSPA_Web_Api.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,8 +21,8 @@ namespace HSPA_Web_Api.Controllers
             this.dc = dc;
         }
         [HttpGet]
-        public IActionResult GetCities() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
-            var cities = dc.Cities.ToList();
+        public async Task<IActionResult> GetCities() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
+            var cities = await  dc.Cities.ToListAsync();
             return Ok(cities);
         }
 
