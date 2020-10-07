@@ -49,5 +49,15 @@ namespace HSPA_Web_Api.Controllers
             await dc.SaveChangesAsync();
             return Ok(city);
         }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteCity(int id)
+        {
+            var city = await dc.Cities.FindAsync(id);
+            
+            dc.Cities.Remove(city);
+            await dc.SaveChangesAsync();
+            return Ok(id);
+        }
     }
 }
