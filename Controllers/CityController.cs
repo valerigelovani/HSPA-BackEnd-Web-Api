@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HSPA_Web_Api.Data;
+using HSPA_Web_Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,11 +21,20 @@ namespace HSPA_Web_Api.Controllers
         {
             this.dc = dc;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetCities() { // axla roca chavwert linkshi /api/city amoagdebs am json arrays
+        [HttpGet] // Get api/City
+        public async Task<IActionResult> GetCities() { 
             var cities = await  dc.Cities.ToListAsync();
             return Ok(cities);
         }
 
+        [HttpPost("add")] // Post api/City/add?cityname=Miami
+        public async Task<IActionResult> AddCity(string cityName)
+        {
+            City city = new City();
+            city.Name = cityName;
+            await dc.Cities.AddAsync(city);
+            await dc.SaveChangesAsync();
+            return Ok(city);
+        }
     }
 }
