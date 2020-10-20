@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HSPA_Web_Api.Data.Repo;
+using HSPA_Web_Api.Interfaces;
 using HSPA_Web_Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,31 +11,31 @@ namespace HSPA_Web_Api.Controllers
     [ApiController]
     public class CityController : ControllerBase
     {
-        private readonly ICityRepository repo;
+        private readonly IUnitOfWork uow;
 
-        public CityController(ICityRepository repo)
+        public CityController(IUnitOfWork uow)
         {
-            this.repo = repo;
+            this.uow = uow;
         }
         [HttpGet] // Get api/City
         public async Task<IActionResult> GetCities() { 
-            var cities = await  repo.GetCitiesAsync();
+            var cities = await  uow.CityRepository.GetCitiesAsync();
             return Ok(cities);
         }
      
         [HttpPost("post")]  // ttp://localhost:5000/api/city/post და ბოდიში ვწერთ {"name:"გორი"}
         public async Task<IActionResult> AddCity(City city)
         {
-            repo.AddCity(city);
-            await repo.SaveAsync();
+            uow.CityRepository.AddCity(city);
+            await uow.SaveAsync();
             return StatusCode(201);
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteCity(int id)
         {
-            repo.DeleteCity(id);
-            await repo.SaveAsync();
+            uow.CityRepository.DeleteCity(id);
+            await uow.SaveAsync();
             return Ok(id);
         }
 

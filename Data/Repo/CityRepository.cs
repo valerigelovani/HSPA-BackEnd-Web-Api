@@ -1,4 +1,5 @@
-﻿using HSPA_Web_Api.Models;
+﻿using HSPA_Web_Api.Interfaces;
+using HSPA_Web_Api.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,6 @@ namespace HSPA_Web_Api.Data.Repo
         public async Task<IEnumerable<City>> GetCitiesAsync()
         {
             return await dc.Cities.ToListAsync();
-        }
-
-        public async Task<bool> SaveAsync()
-        {
-            return await dc.SaveChangesAsync() > 0;
         }
     }
 }
