@@ -75,3 +75,5 @@ C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\bin\Debug\netcoreapp3.1\runtimes\win\
 C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\obj\Debug\netcoreapp3.1\HSPA-Web-Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\obj\Debug\netcoreapp3.1\HSPA-Web-Api.csproj.CoreCompileInputs.cache
+C:\Users\Goga\Desktop\HSPA-BackEnd-Web-Api\obj\Debug\netcoreapp3.1\HSPA-Web-Api.genruntimeconfig.cache
