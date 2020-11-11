@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using HSPA_Web_Api.Dtos;
 using HSPA_Web_Api.Interfaces;
 using HSPA_Web_Api.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,36 +18,27 @@ namespace HSPA_Web_Api.Controllers
     public class CityController : ControllerBase
     {
         private readonly IUnitOfWork uow;
+        private readonly IMapper mapper;
 
-        public CityController(IUnitOfWork uow)
+        public CityController(IUnitOfWork uow, IMapper mapper)
         {
             this.uow = uow;
+            this.mapper = mapper;
         }
+
         [HttpGet] // Get api/City
         public async Task<IActionResult> GetCities() { 
             var cities = await  uow.CityRepository.GetCitiesAsync();
-
-            var citiesDto = from c in cities
-                            select new CityDto()
-                            {
-                                Id = c.Id,
-                                Name = c.Name
-                            };
-
+            var citiesDto = mapper.Map<IEnumerable<CityDto>>(cities); // automapperit igives vaketebt rac qvemot davweret
             return Ok(citiesDto);
         }
      
         [HttpPost("post")]  // ttp://localhost:5000/api/city/post და ბოდიში ვწერთ {"name:"გორი"}
         public async Task<IActionResult> AddCity(CityDto cityDto)
         {
-            var city = new City
-            {
-                Name = cityDto.Name,
-                LastUpdatedBy = 1,
-                LastUpdatedOn = DateTime.Now
-            };
-
-
+            var city = mapper.Map<City>(cityDto);
+            city.LastUpdatedBy = 1; // ყოველ დამატებულ მონაცემზე დაემატება ეს ფიქსირებულად ანუ ვინც დაპოსტა მისი აიდია დროებით ფიქსირებულია
+            city.LastUpdatedOn = DateTime.Now; // ყოველ დამატებულ მონაცმეზე განახლდება დრო და დაემატება
             uow.CityRepository.AddCity(city);
             await uow.SaveAsync();
             return StatusCode(201);
@@ -57,19 +51,5 @@ namespace HSPA_Web_Api.Controllers
             await uow.SaveAsync();
             return Ok(id);
         }
-
-        // Post api/city/add?cityname=Miami
-        // Post api/city/add/Los Angeles
-        //[HttpPost("add")]
-        //[HttpPost("add/{cityName}")]
-        //public async Task<IActionResult> AddCity(string cityName)
-        //{
-        //    City city = new City();
-        //    city.Name = cityName;
-        //    await dc.Cities.AddAsync(city);
-        //    await dc.SaveChangesAsync();
-        //    return Ok(city);
-        //}
-
     }
 }

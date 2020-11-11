@@ -1,4 +1,6 @@
+using AutoMapper;
 using HSPA_Web_Api.Data;
+using HSPA_Web_Api.Helpers;
 using HSPA_Web_Api.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +27,7 @@ namespace HSPA_Web_Api
             options.UseSqlServer(Configuration.GetConnectionString("Default"))); // appsetings.json idan mogvaqvs stringi zemot rom configuration propertia imis gamoyenebit
             services.AddControllers();
             services.AddCors();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly); // servisis damateba
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
