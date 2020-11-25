@@ -25,7 +25,7 @@ namespace HSPA_Web_Api
         {
             services.AddDbContext<DataContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("Default"))); // appsetings.json idan mogvaqvs stringi zemot rom configuration propertia imis gamoyenebit
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly); // servisis damateba
             services.AddScoped<IUnitOfWork, UnitOfWork>();
