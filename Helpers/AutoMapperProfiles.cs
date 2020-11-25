@@ -12,8 +12,8 @@ namespace HSPA_Web_Api.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<City, CityDto>(); // ra tipidan ra tipshi unda damapos amasgetis dros
-            CreateMap<CityDto, City>(); // amas postis dros viyenebt naxe citykontrolershi am mimartulebas citydtodan citysken
+            CreateMap<City, CityDto>().ReverseMap(); // ra tipidan ra tipshi unda damapos amasgetis dros
+            CreateMap<City, CityUpdateDto>().ReverseMap(); // amas postis dros viyenebt naxe citykontrolershi am mimartulebas citydtodan citysken
         }
     }
 }

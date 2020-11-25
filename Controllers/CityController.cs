@@ -56,6 +56,18 @@ namespace HSPA_Web_Api.Controllers
             return StatusCode(200);
         }
 
+
+        [HttpPut("updateCityName/{id}")]  //ttp://localhost:5000/api/city/update/1
+        public async Task<IActionResult> UpdateCity(int id, CityUpdateDto cityDto)
+        {
+            var cityFromDb = await uow.CityRepository.FindCity(id);
+            cityFromDb.LastUpdatedBy = 1;
+            cityFromDb.LastUpdatedOn = DateTime.Now;
+            mapper.Map(cityDto, cityFromDb);
+            await uow.SaveAsync();
+            return StatusCode(200);
+        }
+
         [HttpPatch("update/{id}")]  //ttp://localhost:5000/api/city/update/1
         public async Task<IActionResult> UpdateCityPatch(int id, JsonPatchDocument<City> cityToPatch)
         {
