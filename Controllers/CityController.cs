@@ -48,6 +48,9 @@ namespace HSPA_Web_Api.Controllers
         [HttpPut("update/{id}")]  //ttp://localhost:5000/api/city/update/1
         public async Task<IActionResult> UpdateCity(int id, CityDto cityDto)
         {
+            if(id != cityDto.Id)
+                return BadRequest("განახლება შეუძლებელია");
+
             var cityFromDb = await uow.CityRepository.FindCity(id);
 
             if (cityFromDb == null)
