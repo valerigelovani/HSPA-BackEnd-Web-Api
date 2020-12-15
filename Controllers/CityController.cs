@@ -49,6 +49,10 @@ namespace HSPA_Web_Api.Controllers
         public async Task<IActionResult> UpdateCity(int id, CityDto cityDto)
         {
             var cityFromDb = await uow.CityRepository.FindCity(id);
+
+            if (cityFromDb == null)
+                return BadRequest("განახლება შეუძლებელია");
+
             cityFromDb.LastUpdatedBy = 1;
             cityFromDb.LastUpdatedOn = DateTime.Now;
             mapper.Map(cityDto, cityFromDb);

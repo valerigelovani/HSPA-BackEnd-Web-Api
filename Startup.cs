@@ -36,7 +36,7 @@ namespace HSPA_Web_Api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage(); // detaluri exception ebi aqedan modis
             }
 
             app.UseRouting();
