@@ -3,6 +3,7 @@ using HSPA_Web_Api.Data;
 using HSPA_Web_Api.Extensions;
 using HSPA_Web_Api.Helpers;
 using HSPA_Web_Api.Interfaces;
+using HSPA_Web_Api.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,9 @@ namespace HSPA_Web_Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.ConfigureExceptionHandler(env);
+            //  app.ConfigureExceptionHandler(env);
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseRouting();
             app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()); //crosed core error fix amis gareshe erors amoagdeb saitze radgan ori localhostia
