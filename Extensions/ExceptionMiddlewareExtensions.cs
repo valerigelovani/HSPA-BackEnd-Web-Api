@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using HSPA_Web_Api.Middlewares;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,11 @@ namespace HSPA_Web_Api.Extensions
     public static class ExceptionMiddlewareExtensions
     {
         public static void ConfigureExceptionHandler(this IApplicationBuilder app,
+            IWebHostEnvironment env)
+        {
+            app.UseMiddleware<ExceptionMiddleware>();
+        }
+            public static void ConfigureBuiltinExceptionHandler(this IApplicationBuilder app,
             IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
