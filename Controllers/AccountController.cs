@@ -27,7 +27,11 @@ namespace HSPA_Web_Api.Controllers
                 return Unauthorized();
             }
 
-            return Ok(user);
+            var loginRes = new LoginResDto();
+            loginRes.UserName = user.UserName;
+            loginRes.Token = "Token to be generated";
+
+            return Ok(loginRes);
         }
     }
 }
