@@ -14,9 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace HSPA_Web_Api.Controllers
 {
-    [Route("api/[controller]")] // /api/city anu kontrooleris saxeli
-    [ApiController]
-    public class CityController : ControllerBase
+    public class CityController : BaseController
     {
         private readonly IUnitOfWork uow;
         private readonly IMapper mapper;
